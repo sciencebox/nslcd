@@ -1,0 +1,35 @@
+stages:
+  - images
+
+build-image-dev:
+  stage: images
+  except:
+  - tags
+  - master
+  - qa
+  tags:
+  - docker-image-build
+  script: "true"
+  variables:
+    TO: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+
+build-image-qa:
+  stage: images
+  only:
+    - qa
+  tags:
+    - docker-image-build
+  script: "true"
+  variables:
+    TO: ${CI_REGISTRY_IMAGE}:qa
+
+build-image-prod:
+  stage: images
+  only:
+    - master
+  tags:
+    - docker-image-build
+  script: "true"
+  variables:
+    TO: ${CI_REGISTRY_IMAGE}:stable
+
