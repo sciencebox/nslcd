@@ -5,7 +5,8 @@ Docker image to run the local LDAP name service daemon.
 ### Usage
 - The image only comes with the software and the default configuration file;
 - It should be used in combination with Helm charts (or similar tools for container configuration) to create the custom configuration;
-- The default command is `/usr/sbin/nslcd", "--debug`. The `--debug` option is used to keep the process in foreground.
+- The default command is `/usr/sbin/nslcd", "--debug`. The `--debug` option is used to keep the process in foreground;
+- If using Helm charts to provide a configuration file, this should be owned by root and readable by root only.
 
 ### Exposing NSLCD to other contianers
 - It is possible to export the nslcd socket once the process is running;
