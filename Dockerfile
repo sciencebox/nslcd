@@ -8,4 +8,6 @@ RUN yum -y install \
       yum clean all && \
       rm -rf /var/cache/yum
 
+RUN rm -f /etc/nscd.conf
+
 CMD ["/usr/sbin/nslcd", "--debug"]
